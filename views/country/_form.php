@@ -16,15 +16,17 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'Name')->textInput(['maxlength' => true]) ?>
 
+    <?= $form->field($model, 'Population')->textInput(['maxlength' => true]) ?>
+
+    <?= $form->field($model, 'SurfaceArea')->textInput(['maxlength' => true]) ?>
+
+    <?= $form->field($model, 'Capital')->textInput() ?>
+
     <?= $form->field($model, 'Continent')->dropDownList([ 'Asia' => 'Asia', 'Europe' => 'Europe', 'North America' => 'North America', 'Africa' => 'Africa', 'Oceania' => 'Oceania', 'Antarctica' => 'Antarctica', 'South America' => 'South America', ], ['prompt' => '']) ?>
 
     <?= $form->field($model, 'Region')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'SurfaceArea')->textInput() ?>
-
     <?= $form->field($model, 'IndepYear')->textInput() ?>
-
-    <?= $form->field($model, 'Population')->textInput() ?>
 
     <?= $form->field($model, 'LifeExpectancy')->textInput() ?>
 
@@ -37,8 +39,6 @@ use yii\widgets\ActiveForm;
     <?= $form->field($model, 'GovernmentForm')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'HeadOfState')->textInput(['maxlength' => true]) ?>
-
-    <?= $form->field($model, 'Capital')->textInput() ?>
 
     <?= $form->field($model, 'Code2')->textInput(['maxlength' => true]) ?>
 

@@ -27,36 +27,51 @@ AppAsset::register($this);
 <?php $this->beginBody() ?>
 
 <div class="wrap">
-    <?php
-    NavBar::begin([
-        'brandLabel' => Yii::$app->name,
-        'brandUrl' => Yii::$app->homeUrl,
-        'options' => [
-            'class' => 'navbar-inverse navbar-fixed-top',
+<?php
+
+NavBar::begin([
+
+      'brandLabel' => Yii::$app->name,  
+      'brandUrl' => Yii::$app->homeUrl, 
+      'options' => [
+         'class' => 'navbar-inverse navbar-fixed-top', 
+       ],
+  ]);
+                  
+                  
+    echo Nav::widget([
+        'options' => ['class' => 'navbar-nav navbar-right'],
+        'items' => [
+            [ 'label' => 'Country',
+                'items' => [
+                    ['label' => 'Overzicht', 'url' => ['/country/overzicht', ''] ],
+                    ['label' => 'Overzicht Europe', 'url' => ['/country/overzicht-europe', ''] ],
+                    ['label' => 'Voeg toe', 'url' => ['/country/create', ''] ],
+                    ['label' => 'Europa', 'url' => ['/country/index?countrySearch[Continent]=Europe'] ],
+                    ['label' => 'Azie', 'url' => ['/country/index?countrySearch[Continent]=Asia'] ],
+                    ['label' => 'Noord-Amerika', 'url' => ['/country/index?countrySearch[Continent]=North America'] ],
+                    ['label' => 'Zuid-Amerika', 'url' => ['/country/index?countrySearch[Continent]=South America'] ],
+                    ['label' => 'Africa', 'url' => ['/country/index?countrySearch[Continent]=Africa'] ],
+                    ['label' => 'Antarctica', 'url' => ['/country/index?countrySearch[Continent]=Antarctica'] ],
+                    ['label' => 'Oceaan', 'url' => ['/country/index?countrySearch[Continent]=Oceania'] ],
+                ],
+            ],
         ],
     ]);
     echo Nav::widget([
         'options' => ['class' => 'navbar-nav navbar-right'],
         'items' => [
-            ['label' => 'Home', 'url' => ['/site/index']],
-            ['label' => 'About', 'url' => ['/site/about']],
-            ['label' => 'Contact', 'url' => ['/site/contact']],
-            Yii::$app->user->isGuest ? (
-                ['label' => 'Login', 'url' => ['/site/login']]
-            ) : (
-                '<li>'
-                . Html::beginForm(['/site/logout'], 'post')
-                . Html::submitButton(
-                    'Logout (' . Yii::$app->user->identity->username . ')',
-                    ['class' => 'btn btn-link logout']
-                )
-                . Html::endForm()
-                . '</li>'
-            )
+            [ 'label' => 'City',
+                'items' => [
+                    ['label' => 'Overzicht', 'url' => ['/country/index', ''] ],
+                    ['label' => 'Voeg toe', 'url' => ['/country/create', ''] ],
+                ],
+            ],
         ],
     ]);
-    NavBar::end();
-    ?>
+                  
+   NavBar::end();
+ ?>
 
     <div class="container">
         <?= Breadcrumbs::widget([

@@ -18,31 +18,46 @@ $this->params['breadcrumbs'][] = $this->title;
         <?= Html::a('Create Country', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
-    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
+    <?php // echo $this->render('_search', ['model' => $searchModel]); 
+    ?>
 
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
-
+            ['class' => 'yii\grid\ActionColumn'],
             'Code',
-            'Name',
-            'Continent',
-            'Region',
-            'SurfaceArea',
+            [
+                'label' => 'Naam',
+                'attribute' => 'Name',
+                'contentOptions' => ['style' => 'font-weight: bold;'],
+            ],
+            [
+                'label' => 'Hoofdstad',
+                'attribute' => 'Capital',
+                'contentOptions' => ['style' => 'width:120px; white-space: normal;'],
+                'format' => 'raw',
+                'value' => function ($data) {
+                    return Html::a($data->Capital,['/city/index', 'naar'=>$data->Capital]);
+                }
+            ],
+            [
+                'label' => 'Inwoners',
+                'attribute' => 'Population',
+            ],
+            [
+                'label' => 'Oppervlakte',
+                'attribute' => 'SurfaceArea',
+            ],
+            //'Region',
             //'IndepYear',
-            //'Population',
             //'LifeExpectancy',
             //'GNP',
             //'GNPOld',
             //'LocalName',
             //'GovernmentForm',
             //'HeadOfState',
-            //'Capital',
             //'Code2',
-
-            ['class' => 'yii\grid\ActionColumn'],
         ],
     ]); ?>
 
